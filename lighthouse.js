@@ -96,7 +96,7 @@ if (!argv.env) {
         const reportsRootDir = 'reports';
 
         if (!fs.existsSync(reportsRootDir)) fs.mkdirSync(reportsRootDir);
-        let dirName = `${reportsRootDir}/${urlObj.host.replace('www.','')}`;
+        let dirName = `${reportsRootDir}/${argv.env}`;
         if (urlObj.pathname !== '/') dirName = dirName + urlObj.pathname.replace(/\//g, '_');
         if (!fs.existsSync(dirName)) fs.mkdirSync(dirName);
 
