@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lighthouse": "node lighthouse.js --env"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/simonhudson/node-lighthouse/issues"
   },
-  "homepage": "https://github.com/simonhudson/node-lighthouse#readme"
+  "homepage": "https://github.com/simonhudson/node-lighthouse#readme",
+  "devDependencies": {
+    "lighthouse": "^5.6.0",
+    "yargs": "^15.3.1"
+  }
 }
