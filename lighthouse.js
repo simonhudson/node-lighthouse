@@ -81,6 +81,28 @@ const compareReports = (from, to) => {
     }
 };
 
+const getRecentReportContents = (prevReports, dirName) => {
+    let dates = [];
+    for (let report in prevReports) {
+        dates.push(
+            new Date(path.parse(prevReports[report]).name.replace(/_/g, ':'))
+        );
+    }
+    const max = dates.reduce((a, b) => Math.max(a, b));
+    const recentReport = new Date(max).toISOString();
+    return getContents(dirName + '/' + recentReport.replace(/:/g, '_') + '.json');
+};
+
+const writeReport = (dirName, results) => {
+    fs.writeFile(
+        `${dirName}/${results.js['fetchTime'].replace(/:/g, '_')}.json`,
+        results.json,
+        err => {
+           if (err) throw err;
+        }
+    );
+}
+
 if (!argv.env) {
     console.log('No env argument passed')
 } else {
@@ -103,24 +125,10 @@ if (!argv.env) {
         launchChromeAndRunLighthouse(url).then(results => {
             const prevReports = glob(`${dirName}/*.json`, { sync: true });
             if (prevReports.length) {
-                let dates = [];
-                for (let report in prevReports) {
-                    dates.push(
-                        new Date(path.parse(prevReports[report]).name.replace(/_/g, ':'))
-                    );
-                }
-                const max = dates.reduce((a, b) => Math.max(a, b));
-                const recentReport = new Date(max).toISOString();
-                const recentReportContents = getContents(dirName + '/' + recentReport.replace(/:/g, '_') + '.json');
+                const recentReportContents = getRecentReportContents(prevReports, dirName); 
                 compareReports(recentReportContents, results.js);
             }
-            fs.writeFile(
-                `${dirName}/${results.js['fetchTime'].replace(/:/g, '_')}.json`,
-                results.json,
-                err => {
-                   if (err) throw err;
-                }
-            );
+            writeReport(dirName, results);
         });
     } else {
        console.log(`No environment URL found for ${argv.env}`)
