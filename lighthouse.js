@@ -39,15 +39,15 @@ const getContents = pathStr => {
 
 const compareReports = (from, to) => {
     const metricFilter = [
-        "first-contentful-paint",
-        "first-meaningful-paint",
-        "speed-index",
-        "estimated-input-latency",
-        "total-blocking-time",
-        "max-potential-fid",
-        "time-to-first-byte",
-        "first-cpu-idle",
-        "interactive"
+        'first-contentful-paint',
+        'first-meaningful-paint',
+        'speed-index',
+        'estimated-input-latency',
+        'total-blocking-time',
+        'max-potential-fid',
+        'time-to-first-byte',
+        'first-cpu-idle',
+        'interactive'
     ];
 
     const calcPercentageDiff = (from, to) => {
@@ -86,8 +86,8 @@ if (!argv.env) {
 } else {
     if (argv.from && argv.to) {
         compareReports(
-            getContents(argv.from + ".json"),
-            getContents(argv.to + ".json")
+            getContents(argv.from + '.json'),
+            getContents(argv.to + '.json')
         );
     } else if (envUrl[argv.env]) {
 
