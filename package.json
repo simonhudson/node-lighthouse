@@ -1,0 +1,20 @@
+{
+  "name": "node-lighthouse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonhudson/node-lighthouse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simonhudson/node-lighthouse/issues"
+  },
+  "homepage": "https://github.com/simonhudson/node-lighthouse#readme"
+}
