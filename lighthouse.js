@@ -95,7 +95,7 @@ const getRecentReportContents = (prevReports, dirName) => {
 
 const writeReport = (dirName, results) => {
     fs.writeFile(
-        `${dirName}/${results.js['fetchTime'].replace(/:/g, '_')}.json`,
+        `${dirName}/${results.js.fetchTime.replace(/:/g, '_')}.json`,
         results.json,
         err => {
            if (err) throw err;
