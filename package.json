@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/simonhudson/node-lighthouse#readme",
   "devDependencies": {
+    "glob": "^7.1.6",
     "lighthouse": "^5.6.0",
     "yargs": "^15.3.1"
   }
