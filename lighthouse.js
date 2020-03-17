@@ -124,10 +124,7 @@ if (!argv.env) {
 
         launchChromeAndRunLighthouse(url).then(results => {
             const prevReports = glob(`${dirName}/*.json`, { sync: true });
-            if (prevReports.length) {
-                const recentReportContents = getRecentReportContents(prevReports, dirName); 
-                compareReports(recentReportContents, results.js);
-            }
+            if (prevReports.length) compareReports(getRecentReportContents(prevReports, dirName), results.js);
             writeReport(dirName, results);
         });
     } else {
